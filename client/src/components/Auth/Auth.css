@@ -1,0 +1,21 @@
+.auth-input { 
+  border: 0px;
+  margin: 10px 10px 0 0;
+  outline: 1px solid #ccc;
+  padding: 10px; 
+  width: 100%;
+}
+
+.auth-password-toggle { 
+  position: absolute;
+  bottom: 10%;
+  color: #ccc;
+  cursor: pointer;
+  font-size: .7em;
+  right: 26px;
+  z-index: 100;
+}
+
+.auth-password-toggle:hover { 
+  color: #8e8e8e;
+}
