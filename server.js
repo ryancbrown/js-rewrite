@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 
 // Routes 
 app.use("/auth", require("./routes/auth"));
+app.use("/dns", require("./routes/dns"));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "public", "index.html"));
