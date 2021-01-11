@@ -3,7 +3,7 @@ const dns = require('../controllers/dns');
 
 router
   .route('/')
-  .get(dns.call);
+  .get(dns.list);
 
 router
   .route('/create')
