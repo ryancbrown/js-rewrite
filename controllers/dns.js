@@ -35,9 +35,8 @@ const api_errors = {
   "internal_error_could_not_update_zone": "api_error",
 };
 
- // Dreamhost API for some reason does not support POST requests 
- // for subdomain creation and deletion but GET is allowed
-
+// Dreamhost API for some reason does not support POST requests 
+// for subdomain creation and deletion but GET is allowed
 module.exports = {
   list: (_req, res) => {
     const dreamhostURL = module.exports.buildURL(args.key, args.cmd[0], args.unique_id, args.format);
@@ -47,12 +46,12 @@ module.exports = {
           res.send(result.data);
         });
     } catch { 
-      res.send("server_error")
+      res.send("connection_to_dns_api_failed").status(400);
     };
   },
   create: (req, res) => {  
     const dreamhostURL = module.exports.buildURL(args.key, args.cmd[1], args.unique_id, args.format, req.body.url, args.type, args.value);
-    
+    console.log(dreamhostURL)
     try {
       axios.get(dreamhostURL)
         .then(result => { 
@@ -69,7 +68,7 @@ module.exports = {
           };
         });
     } catch { 
-      res.send("server_error");
+      res.json({ status: 400, code: "connection_to_dns_api_failed" }).status(400);
     };
   }, 
   delete: (req, res) => { 
@@ -91,7 +90,7 @@ module.exports = {
           };
         });
       } catch { 
-        res.send("server_error");
+        res.json({ status: 400, code: "connection_to_dns_api_failed" }).status(400);
       };
   }, 
   buildURL: (key, cmd, unique_id, format, record, type, value) => { 
@@ -110,6 +109,6 @@ module.exports = {
           url = url + "&unique_id=" + unique_id;
           url = url + "&format=" + format;
       return url;
-    }
-  }
+    };
+  },
 }

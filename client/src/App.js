@@ -1,22 +1,55 @@
 // Dependencies
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import axios from "axios";
 
 // Components 
 import { Login } from "./components/Auth"
+import SetupSubdomainOption from "./components/Profile/SetupSubdomainOption";
 
 // CSS
 import { Container, Row } from "react-bootstrap"; 
 
-function App() {
-  return (
-    <div className="App">
-      <Container>
-        <Row> 
-          <Login />
-        </Row>
-      </Container>
-    </div>
-  );
-}
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    }
+  }
 
-export default App;
+  componentDidMount = () => {
+
+  }
+
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route
+            exact
+            path="/login"
+            render={props => (
+              <>
+                <Container fluid className="px-0 pt-2">
+                  <Login /> 
+                </Container>
+              </>
+            )}
+          />
+        </Switch>
+        <Switch>
+          <Route
+            exact
+            path="/account"
+            render={props => (
+              <Container fluid className="px-0 pt-2">
+                <SetupSubdomainOption />
+              </Container>
+            )}
+          />
+        </Switch>
+      </Router>
+    );
+  }
+}

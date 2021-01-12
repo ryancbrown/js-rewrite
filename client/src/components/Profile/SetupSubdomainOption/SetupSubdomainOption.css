@@ -1,0 +1,13 @@
+.account-input { 
+  border: 0px;
+  outline: 1px solid #f1f1f1;
+  padding: 10px 10px; 
+  width: 100%;
+}
+
+.account-input:focus { 
+  border: 0px;
+  outline: 1px solid #ccc;
+  padding: 10px 10px; 
+  width: 100%;
+}
